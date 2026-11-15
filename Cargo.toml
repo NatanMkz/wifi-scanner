@@ -1,0 +1,17 @@
+[package]
+name = "wifi-scanner"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+comfy-table = "7"
+crossterm = "0.29"
+
+# A API nativa do Wi-Fi só existe no Windows, então a dependência só entra lá
+[target.'cfg(windows)'.dependencies.windows]
+version = "0.58"
+features = [
+    "Win32_Foundation",
+    "Win32_NetworkManagement_Ndis",
+    "Win32_NetworkManagement_WiFi",
+]
